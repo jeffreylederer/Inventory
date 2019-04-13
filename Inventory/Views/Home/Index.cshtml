@@ -1,5 +1,6 @@
-﻿@model IEnumerable<Inventory.Models.Bowl>
-
+﻿@model PagedList.IPagedList<Inventory.Models.Bowl>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
 }
@@ -12,75 +13,81 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Picture)
+            Picture
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FileName)
+            File Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Bias.BiasSize)
+            Bias
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BowlSize.Size)
+            Size
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Weight.BowlWeight)
+            Weight
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.InLocker)
+            In a Locker
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerName)
+            Locker Owner
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Comment)
+            Comment
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @{
-                String img64Url = "";
-                if (item.Picture != null)
-                {
-                    string img64 = Convert.ToBase64String(item.Picture);
-                    img64Url = $"data:image/jpeg;base64,{img64}"; //imagetype can be e.g. gif, jpeg, png etc.
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    String img64Url = "";
+                    if (item.Picture != null)
+                    {
+                        string img64 = Convert.ToBase64String(item.Picture);
+                        img64Url = $"data:image/jpeg;base64,{img64}"; //imagetype can be e.g. gif, jpeg, png etc.
+                    }
                 }
-            }
-            <img src="@img64Url"  width="50"/>
+                <img src="@img64Url" width="50" />
 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FileName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bias.BiasSize)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BowlSize.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Weight.BowlWeight)
-        </td>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bias.BiasSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BowlSize.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight.BowlWeight)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.InLocker)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OwnerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.InLocker)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index"))

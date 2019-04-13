@@ -43,7 +43,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BowlSizeId, "BowlSizeId", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.BowlSizeId, "Size", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("BowlSizeId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.BowlSizeId, "", new { @class = "text-danger" })
@@ -51,7 +51,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BiasId, "BiasId", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.BiasId, "Bias", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("BiasId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.BiasId, "", new { @class = "text-danger" })
@@ -59,7 +59,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.WeightId, "WeightId", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.WeightId, "Weight", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("WeightId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.WeightId, "", new { @class = "text-danger" })

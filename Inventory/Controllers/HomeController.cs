@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Inventory.Controllers
 {
@@ -12,10 +13,13 @@ namespace Inventory.Controllers
         private BowlContext db = new BowlContext();
 
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var bowls = db.Bowls.Include(b => b.Bias).Include(b => b.BowlSize).Include(b => b.Weight);
-            return View(bowls.ToList());
+            var bowls = db.Bowls.Include(b => b.Bias).Include(b => b.BowlSize).Include(b => b.Weight).OrderBy(b=>b.Id);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(bowls.ToPagedList(pageNumber, pageSize));
+
         }
 
         public ActionResult FileUpload(int? id)

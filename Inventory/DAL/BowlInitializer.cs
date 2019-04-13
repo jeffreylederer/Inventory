@@ -27,7 +27,7 @@ namespace Inventory.DAL
             var biases = new List<Bias>()
             {
                 new Bias() {Id = 1, BiasSize = "Narrow"},
-                new Bias() {Id = 2, BiasSize = "Normal"},
+                new Bias() {Id = 2, BiasSize = "Regular"},
                 new Bias() {Id = 3, BiasSize = "Wide"}
             };
             biases.ForEach(s => context.Biases.Add(s));
@@ -35,7 +35,7 @@ namespace Inventory.DAL
             var weights = new List<Weight>()
             {
                 new Weight() {Id=1, BowlWeight = "Light"},
-                new Weight() {Id=1, BowlWeight = "Normal"},
+                new Weight() {Id=1, BowlWeight = "Regular"},
                 new Weight() {Id=1, BowlWeight = "Heavy"}
             };
             weights.ForEach(s => context.Weights.Add(s));

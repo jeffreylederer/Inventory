@@ -24,7 +24,7 @@ No unit test project
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+This application can either be deployed to IIS or Azure via publisy
 
 
 ## Contributing

@@ -1,0 +1,25 @@
+﻿@model Inventory.Models.ImageGallery
+@{
+    ViewBag.Title = "Upload";
+}
+<h2>Upload</h2>
+@{
+    var id = ViewBag.Id;
+}
+@using (Html.BeginForm("FileUpload", "Home", FormMethod.Post,new{enctype="multipart/form-data"}))
+{
+    @Html.ValidationSummary(true)
+    
+    <table>
+        <tr>
+            <td>Select File : </td>
+            <td>
+                @Html.TextBoxFor(model=> model.File, new{type="file"})
+                @Html.ValidationMessage("CustomError")
+            </td>
+            <td>
+                <input type="submit" value="Upload" />
+            </td>
+        </tr>
+    </table>
+}

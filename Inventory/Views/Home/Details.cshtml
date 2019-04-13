@@ -1,0 +1,91 @@
+﻿@model Inventory.Models.Bowl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bowl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Picture)
+        </dt>
+
+        <dd>
+            @{
+                String img64Url = "";
+                if (Model.Picture != null)
+                {
+                    string img64 = Convert.ToBase64String(Model.Picture);
+                    img64Url = $"data:image/jpeg;base64,{img64}"; //imagetype can be e.g. gif, jpeg, png etc.
+                }
+            }
+            <img src="@img64Url" width="150" />
+
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bias.BiasSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bias.BiasSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BowlSize.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BowlSize.Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight.BowlWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight.BowlWeight)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InLocker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InLocker)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

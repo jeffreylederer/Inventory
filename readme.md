@@ -24,7 +24,7 @@ No unit test project
 
 ## Deployment
 
-This application can either be deployed to IIS or Azure via publisy
+This application can either be deployed to IIS or Azure via publish
 
 
 ## Contributing

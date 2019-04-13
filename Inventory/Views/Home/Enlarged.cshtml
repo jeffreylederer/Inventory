@@ -1,0 +1,27 @@
+﻿@model Inventory.Models.BowlViewModel
+
+@{
+    ViewBag.Title = "Enlarged";
+}
+
+<h2>Enlarged View</h2>
+
+<div>
+    <h4>Bowl Image</h4>
+    <hr />
+    
+        @{
+                String img64Url = "";
+                if (Model.Picture != null)
+                {
+                    string img64 = Convert.ToBase64String(Model.Picture);
+                    img64Url = $"data:image/jpeg;base64,{img64}"; //imagetype can be e.g. gif, jpeg, png etc.
+                }
+            }
+            <img src="@img64Url" width="500" />
+
+        <
+</div>
+<p>
+    @Html.ActionLink("Back to Edit", "Edit", new { id = Model.Id }) 
+</p>

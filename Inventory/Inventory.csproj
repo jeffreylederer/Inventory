@@ -177,6 +177,7 @@
     <Compile Include="Models\Bias.cs" />
     <Compile Include="Models\Bowl.cs" />
     <Compile Include="Models\BowlSize.cs" />
+    <Compile Include="Models\BowlViewModel.cs" />
     <Compile Include="Models\ImageGallery.cs" />
     <Compile Include="Models\Weight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -217,6 +218,7 @@
     <Content Include="Views\Weights\Details.cshtml" />
     <Content Include="Views\Weights\Edit.cshtml" />
     <Content Include="Views\Weights\Index.cshtml" />
+    <Content Include="Views\Home\Enlarged.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

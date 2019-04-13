@@ -22,6 +22,26 @@ namespace Inventory.Controllers
 
         }
 
+        public ActionResult Enlarged(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Bowl bowl = db.Bowls.Find(id);
+            if (bowl == null)
+            {
+                return HttpNotFound();
+            }
+            
+            var viewModel = new BowlViewModel()
+            {
+                Picture = bowl.Picture ?? new byte[] {0},
+                Id=bowl.Id
+            };
+            return View(viewModel);
+        }
+
         public ActionResult FileUpload(int? id)
         {
             if (id == null)

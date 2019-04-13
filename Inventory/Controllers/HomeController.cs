@@ -158,7 +158,7 @@ namespace Inventory.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Picture,BowlSizeId,BiasId,WeightId,InLocker,OwnerName,Comment")] Bowl bowl)
+        public ActionResult Edit([Bind(Include = "Id,Picture,FileName,BowlSizeId,BiasId,WeightId,InLocker,OwnerName,Comment")] Bowl bowl)
         {
             if (ModelState.IsValid)
             {

@@ -14,9 +14,23 @@ namespace Inventory
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Search",
+                url: "{controller}/{action}/{sortOrder}/{currentFilter}/{search}/{page}",
+                defaults: new
+                {
+                    controller = "Home",
+                    action = "Index",
+                    sortOrder = UrlParameter.Optional,
+                    currentFilter = UrlParameter.Optional,
+                    search = UrlParameter.Optional,
+                    id = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Edit", id = UrlParameter.Optional }
             );
         }
     }

@@ -10,6 +10,27 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <table class="table-condensed">
+        <tr>
+            <td>
+                Bowl Size:
+            </td>
+            <td>
+                @Html.DropDownList("search", (SelectList)ViewBag.BowlSizeId, "")
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <input type="submit" value="Search" />
+            </td>
+        </tr>
+    </table>
+}
+<br/>
 <table class="table">
     <tr>
         <th>
@@ -18,14 +39,16 @@
         <th>
             File Name
         </th>
+
         <th>
-            Bias
+            @Html.ActionLink("Size", "Index", new { sortOrder = ViewBag.SizeSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            Size
+            @Html.ActionLink("Bias", "Index", new { sortOrder = ViewBag.BiasSortParm, currentFilter = ViewBag.CurrentFilter })
+
         </th>
         <th>
-            Weight
+            @Html.ActionLink("Weight", "Index", new { sortOrder = ViewBag.WeightSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
 
         <th>
@@ -59,11 +82,12 @@
                 @Html.DisplayFor(modelItem => item.FileName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Bias.BiasSize)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.BowlSize.Size)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bias.BiasSize)
+            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Weight.BowlWeight)
             </td>
@@ -90,4 +114,5 @@
 <br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("Index"))
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -1,10 +1,12 @@
-﻿using Inventory.DAL;
+﻿using System;
+using Inventory.DAL;
 using Inventory.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using PagedList;
+using System.Collections.Generic;
 
 namespace Inventory.Controllers
 {
@@ -13,13 +15,81 @@ namespace Inventory.Controllers
         private BowlContext db = new BowlContext();
 
         // GET: Home
-        public ActionResult Index(int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string search, int? page)
         {
-            var bowls = db.Bowls.Include(b => b.Bias).Include(b => b.BowlSize).Include(b => b.Weight).OrderBy(b=>b.Id);
+            //var bowls = db.Bowls.Include(b => b.Bias).Include(b => b.BowlSize).Include(b => b.Weight).ToList();
+           
+
+            ViewBag.CurrentSort = sortOrder;
+
+            ViewBag.SizeSortParm = String.IsNullOrEmpty(sortOrder) ? "size_desc" : "";
+            ViewBag.BiasSortParm = sortOrder == "Bias" ? "bias_desc" : "Bias";
+            ViewBag.WeightSortParm = sortOrder == "Weight" ? "weight_desc" : "Weight";
+
+            var bowls = db.Bowls.ToList();
+
+            
+            if (!string.IsNullOrWhiteSpace(search) || !string.IsNullOrWhiteSpace(sortOrder))
+            {
+                page = 1;
+                
+            }
+            string selected = "";
+            if (search != null)
+            {
+                if (search != "")
+                {
+                    bowls = bowls.Where(x => x.BowlSizeId == int.Parse(search)).ToList();
+                    selected = search;
+                }
+                else
+                {
+                    selected = "";
+
+                }
+            }
+            else if (!string.IsNullOrWhiteSpace(ViewBag.CurrentFilter))
+            {
+                bowls = bowls.Where(x => x.BowlSizeId == int.Parse(ViewBag.CurrentFilter.ToString())).ToList();
+                selected = ViewBag.CurrentFilter.ToString();
+            }
+            else if (!string.IsNullOrWhiteSpace(currentFilter))
+            {
+                bowls = bowls.Where(x => x.BowlSizeId == int.Parse(currentFilter)).ToList();
+                selected = currentFilter;
+            }
+            ViewBag.CurrentFilter = selected;
+            
+
+            switch (sortOrder)
+            {
+                case "size_desc":
+                    bowls.Sort((a, b) => b.BowlSizeId.CompareTo(a.BowlSizeId));
+                    break;
+                case "Bias":
+                    bowls.Sort((a, b) => a.BiasId.CompareTo(b.BiasId));
+                    break;
+                case "bias_desc":
+                    bowls.Sort((a, b) => b.BiasId.CompareTo(a.BiasId));
+                    break;
+                case "Weight":
+                    bowls.Sort((a, b) => a.WeightId.CompareTo(b.WeightId));
+                    break;
+                case "weight_desc":
+                    bowls.Sort((a, b) => b.WeightId.CompareTo(a.WeightId));
+                    break;
+                default:
+                    bowls.Sort((a, b) => a.BowlSizeId.CompareTo(b.BowlSizeId));
+                    break;
+            }
+
             int pageSize = 10;
             int pageNumber = (page ?? 1);
-            return View(bowls.ToPagedList(pageNumber, pageSize));
 
+            ViewBag.BowlSizeId = new SelectList(db.Bowlsizes, "Id", "Size", selected);
+            
+
+            return View(bowls.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult Enlarged(int? id)

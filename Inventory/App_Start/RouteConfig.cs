@@ -13,6 +13,10 @@ namespace Inventory
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapPageRoute("Reports", "Reports", "~/Reports/ReportView.aspx",false, null, 
+                new RouteValueDictionary(new { controller = new IncomingRequestConstraint() }));
+
+
             routes.MapRoute(
                 name: "Search",
                 url: "{controller}/{action}/{sortOrder}/{currentFilter}/{search}/{page}",
@@ -32,6 +36,14 @@ namespace Inventory
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Edit", id = UrlParameter.Optional }
             );
+        }
+
+        public class IncomingRequestConstraint : IRouteConstraint
+        {
+            public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+            {
+                return routeDirection == RouteDirection.IncomingRequest;
+            }
         }
     }
 }

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="InventoryDS" targetNamespace="http://tempuri.org/InventoryDS.xsd" xmlns:mstns="http://tempuri.org/InventoryDS.xsd" xmlns="http://tempuri.org/InventoryDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="InventoryDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="InventoryDS" msprop:Generator_UserDSName="InventoryDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BowlsTable" msprop:Generator_TableClassName="BowlsTableDataTable" msprop:Generator_TableVarName="tableBowlsTable" msprop:Generator_RowChangedName="BowlsTableRowChanged" msprop:Generator_TablePropName="BowlsTable" msprop:Generator_RowDeletingName="BowlsTableRowDeleting" msprop:Generator_RowChangingName="BowlsTableRowChanging" msprop:Generator_RowEvHandlerName="BowlsTableRowChangeEventHandler" msprop:Generator_RowDeletedName="BowlsTableRowDeleted" msprop:Generator_RowClassName="BowlsTableRow" msprop:Generator_UserTableName="BowlsTable" msprop:Generator_RowEvArgName="BowlsTableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Picture" msprop:Generator_ColumnVarNameInTable="columnPicture" msprop:Generator_ColumnPropNameInRow="Picture" msprop:Generator_ColumnPropNameInTable="PictureColumn" msprop:Generator_UserColumnName="Picture" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="BowlSize" msprop:Generator_ColumnVarNameInTable="columnBowlSize" msprop:Generator_ColumnPropNameInRow="BowlSize" msprop:Generator_ColumnPropNameInTable="BowlSizeColumn" msprop:Generator_UserColumnName="BowlSize" type="xs:string" minOccurs="0" />
+              <xs:element name="Bias" msprop:Generator_ColumnVarNameInTable="columnBias" msprop:Generator_ColumnPropNameInRow="Bias" msprop:Generator_ColumnPropNameInTable="BiasColumn" msprop:Generator_UserColumnName="Bias" type="xs:string" minOccurs="0" />
+              <xs:element name="Weight" msprop:Generator_ColumnVarNameInTable="columnWeight" msprop:Generator_ColumnPropNameInRow="Weight" msprop:Generator_ColumnPropNameInTable="WeightColumn" msprop:Generator_UserColumnName="Weight" type="xs:string" minOccurs="0" />
+              <xs:element name="InLocker" msprop:Generator_ColumnVarNameInTable="columnInLocker" msprop:Generator_ColumnPropNameInRow="InLocker" msprop:Generator_ColumnPropNameInTable="InLockerColumn" msprop:Generator_UserColumnName="InLocker" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Owner" msprop:Generator_ColumnVarNameInTable="columnOwner" msprop:Generator_ColumnPropNameInRow="Owner" msprop:Generator_ColumnPropNameInTable="OwnerColumn" msprop:Generator_UserColumnName="Owner" type="xs:string" minOccurs="0" />
+              <xs:element name="Comment" msprop:Generator_ColumnVarNameInTable="columnComment" msprop:Generator_ColumnPropNameInRow="Comment" msprop:Generator_ColumnPropNameInTable="CommentColumn" msprop:Generator_UserColumnName="Comment" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Inventory.DAL;
+using Microsoft.Reporting.WebForms;
+using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Microsoft.Reporting.WebForms;
-using System.IO;
-using System.Data.Entity;
-using System.Net;
-using System.Runtime.InteropServices;
-using Inventory.DAL;
-using Inventory.Models;
 
 namespace Inventory.Reports
 {
-    public partial class ReportView :Page
+    public partial class BowlsInventory :Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -43,7 +35,7 @@ namespace Inventory.Reports
                 {
                     foreach (var item in db.Bowls)
                     {
-                        var row = ds.BowlsTable.AddBowlsTableRow(item.Picture, item.BowlSize.Size, item.Bias.BiasSize,
+                        ds.BowlsTable.AddBowlsTableRow(item.Picture, item.BowlSize.Size, item.Bias.BiasSize,
                             item.Weight.BowlWeight, item.InLocker, item.OwnerName??"", item.Comment);
                     }
                 }
@@ -60,6 +52,12 @@ namespace Inventory.Reports
             }
         }
 
-        
+        protected void Rv1_ReportError(object sender, ReportErrorEventArgs e)
+        {
+            lblError.Text = e.Exception.Message;
+            e.Handled = true;
+        }
+
+
     }
 }

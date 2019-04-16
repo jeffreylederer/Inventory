@@ -13,7 +13,10 @@ namespace Inventory
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapPageRoute("Reports", "Reports", "~/Reports/ReportView.aspx",false, null, 
+            routes.MapPageRoute("InventoryReport", "Reports", "~/Reports/BowlsInventory.aspx",false, null, 
+                new RouteValueDictionary(new { controller = new IncomingRequestConstraint() }));
+
+            routes.MapPageRoute("PicturesReport", "Reports", "~/Reports/BowlsPictures.aspx", false, null,
                 new RouteValueDictionary(new { controller = new IncomingRequestConstraint() }));
 
 

@@ -25,6 +25,14 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="BowlsPicture" msprop:Generator_TableClassName="BowlsPictureDataTable" msprop:Generator_TableVarName="tableBowlsPicture" msprop:Generator_RowChangedName="BowlsPictureRowChanged" msprop:Generator_TablePropName="BowlsPicture" msprop:Generator_RowDeletingName="BowlsPictureRowDeleting" msprop:Generator_RowChangingName="BowlsPictureRowChanging" msprop:Generator_RowEvHandlerName="BowlsPictureRowChangeEventHandler" msprop:Generator_RowDeletedName="BowlsPictureRowDeleted" msprop:Generator_RowClassName="BowlsPictureRow" msprop:Generator_UserTableName="BowlsPicture" msprop:Generator_RowEvArgName="BowlsPictureRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Picture1" msprop:Generator_ColumnVarNameInTable="columnPicture1" msprop:Generator_ColumnPropNameInRow="Picture1" msprop:Generator_ColumnPropNameInTable="Picture1Column" msprop:Generator_UserColumnName="Picture1" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="Picture2" msprop:Generator_ColumnVarNameInTable="columnPicture2" msprop:Generator_ColumnPropNameInRow="Picture2" msprop:Generator_ColumnPropNameInTable="Picture2Column" msprop:Generator_UserColumnName="Picture2" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

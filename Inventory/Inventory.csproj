@@ -193,17 +193,24 @@
     <Compile Include="Models\ImageGallery.cs" />
     <Compile Include="Models\Weight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\BowlsPictures.aspx.cs">
+      <DependentUpon>BowlsPictures.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\BowlsPictures.aspx.designer.cs">
+      <DependentUpon>BowlsPictures.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reports\InventoryDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InventoryDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportView.aspx.cs">
-      <DependentUpon>ReportView.aspx</DependentUpon>
+    <Compile Include="Reports\BowlsInventory.aspx.cs">
+      <DependentUpon>BowlsInventory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\ReportView.aspx.designer.cs">
-      <DependentUpon>ReportView.aspx</DependentUpon>
+    <Compile Include="Reports\BowlsInventory.aspx.designer.cs">
+      <DependentUpon>BowlsInventory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports\Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
@@ -223,7 +230,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Reports\ReportView.aspx" />
+    <Content Include="Reports\BowlsInventory.aspx" />
+    <Content Include="Reports\BowlsPictures.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -306,6 +314,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\BowlsInventory.rdlc" />
+    <EmbeddedResource Include="Reports\BowlsPictures.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
